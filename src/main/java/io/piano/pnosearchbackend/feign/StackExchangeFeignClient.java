@@ -16,10 +16,9 @@ public interface StackExchangeFeignClient {
      * @param page current page
      * @param sort result sort type
      * @param order result ordering
-     * @return
-     * @throws Exception
+     * @return search response
      */
-    @RequestLine("GET /search/advanced?intitle={intitle}&site={site}&pagesize={pagesize}&page={page}&sort={sort}&order={order}")
+    @RequestLine("GET /search/advanced?title={intitle}&site={site}&pagesize={pagesize}&page={page}&sort={sort}&order={order}")
     SESearchResponse search(
             @Param("intitle") String searchString,
             @Param("site") String site,
