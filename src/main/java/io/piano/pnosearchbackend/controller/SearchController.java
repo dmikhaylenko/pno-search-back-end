@@ -13,6 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+/**
+ * This class is search REST controller
+ * @author Dmitry Mikhaylenko
+ */
 @CrossOrigin
 @RestController
 @Api(
@@ -24,7 +28,12 @@ public class SearchController {
     @Autowired
     private SearchService searchService;
 
-
+    /**
+     * Find questions REST method
+     * @param searchQuery search query string
+     * @param page page number
+     * @return search response
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/questions",produces = {"application/json"})
     @ApiOperation(
@@ -46,6 +55,10 @@ public class SearchController {
         return Mono.just(searchService.searchQuestions(parameters));
     }
 
+    /**
+     * Lookup method to inject search parameters prototype to controller
+     * @return search parameters
+     */
     @Lookup("searchParameters")
     protected SearchParameters getSearchParametersPrototype() {
         return null;

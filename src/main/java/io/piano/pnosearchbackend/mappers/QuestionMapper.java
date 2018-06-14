@@ -7,15 +7,29 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * This class convert stack exchange question model to
+ * corresponding DTO object.
+ * @author Dmitry Mikhaylenko
+ */
 @Mapper
 public interface QuestionMapper {
+    /**
+     * Mapper instance
+     */
     QuestionMapper MAPPER = Mappers.getMapper(QuestionMapper.class);
+
+    /**
+     * Method which convert the stack exchange question model to DTO object
+     * @param seQuestion stack exchange question model
+     * @return DTO object
+     */
     @Mappings({
             @Mapping(source = "questionId", target = "id"),
             @Mapping(source = "title", target = "title"),
             @Mapping(source = "link", target = "reference"),
             @Mapping(source = "isAnswered", target = "isAnswered"),
-            @Mapping(source = "creationDate", target = "created"),
+            @Mapping(source = "creationTimeStamp", target = "created"),
             @Mapping(source = "owner.profileImage", target = "imageUrl"),
             @Mapping(source = "owner.displayName", target = "userName")
     })

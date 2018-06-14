@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * Search service implementation
+ * @author Dmitry Mikhaylenko
+ */
 
 @Service
 public class SearchServiceImpl implements SearchService {

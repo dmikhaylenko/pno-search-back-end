@@ -17,16 +17,21 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
+/**
+ * @author Dmitry Mikhaylenko
+ */
 @EnableWebFlux
 @EnableSwagger2
 @SpringBootApplication
 public class PnoSearchBackEndApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(PnoSearchBackEndApplication.class, args);
 	}
 
+	/**
+	 * Stach exchange client bean
+	 * @return stack exchange client
+	 */
 	@Bean
 	public StackExchangeFeignClient stackExchangeFeignClient() {
 		return Feign
@@ -37,6 +42,10 @@ public class PnoSearchBackEndApplication {
 				.target(StackExchangeFeignClient.class, "http://api.stackexchange.com/2.2");
 	}
 
+	/**
+	 * Search parameters prototype bean
+	 * @return search parameters prototype
+	 */
 	@Bean
 	@Scope("prototype")
 	public static SearchParameters searchParameters() {
@@ -48,6 +57,10 @@ public class PnoSearchBackEndApplication {
 		);
 	}
 
+	/**
+	 * Swagger 2 documentation plugin bean
+	 * @return documentation plugin
+	 */
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
